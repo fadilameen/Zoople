@@ -71,6 +71,13 @@ class HomePage extends StatelessWidget {
               },
               child: Text("show confirmation alert"),
             ),
+            ElevatedButton(
+              onPressed: () async {
+                product? b = await Optionsalert(context);
+                print(b);
+              },
+              child: Text("OptionsAlert"),
+            ),
           ],
         ),
       ),
@@ -98,6 +105,43 @@ Future<confirmAction?> confirmed(BuildContext context) async {
               Navigator.of(context).pop(confirmAction.delete);
             },
             child: Text("delete"),
+          ),
+        ],
+      );
+    },
+  );
+}
+
+enum product {
+  apple,
+  samsung,
+  xiomi,
+}
+
+Future<product?> Optionsalert(BuildContext context) async {
+  return await showDialog(
+    context: context,
+    builder: (context) {
+      return SimpleDialog(
+        title: Text("select from below"),
+        children: [
+          SimpleDialogOption(
+            child: Text("Apple"),
+            onPressed: () {
+              Navigator.pop(context, product.apple);
+            },
+          ),
+          SimpleDialogOption(
+            child: Text("Samsumg"),
+            onPressed: () {
+              Navigator.pop(context, product.samsung);
+            },
+          ),
+          SimpleDialogOption(
+            child: Text("Xiomi"),
+            onPressed: () {
+              Navigator.pop(context, product.xiomi);
+            },
           ),
         ],
       );
