@@ -24,26 +24,40 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  bool selected = false;
+  AlignmentGeometry _alignment = Alignment.topRight;
+  void changeAlignment() {
+    setState(() {
+      _alignment = (_alignment == Alignment.topRight)
+          ? Alignment.bottomLeft
+          : Alignment.topRight;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          selected = !selected;
-        });
-      },
-      child: Center(
-        child: Container(
-          width: 250.0,
-          height: 250.0,
-          color: Colors.red,
-          child: AnimatedAlign(
-            alignment: selected ? Alignment.topRight : Alignment.bottomLeft,
-            duration: const Duration(seconds: 1),
-            curve: Curves.fastOutSlowIn,
-            child: const FlutterLogo(size: 50.0),
-          ),
+    return SafeArea(
+      child: DecoratedBox(
+        decoration: BoxDecoration(),
+        child: Stack(
+          children: [
+            AnimatedAlign(
+              alignment: _alignment,
+              curve: Curves.easeInOutBack,
+              duration: Duration(seconds: 3),
+              child: Image(
+                image: NetworkImage(
+                    "https://wallpapers.com/images/high/messi-iphone-qfw3jhocr9xp8brd.webp"),
+                height: 100,
+                width: 75,
+              ),
+            ),
+            Center(
+              child: ElevatedButton(
+                onPressed: () => changeAlignment(),
+                child: Text("start"),
+              ),
+            )
+          ],
         ),
       ),
     );
