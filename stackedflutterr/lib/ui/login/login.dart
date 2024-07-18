@@ -14,18 +14,97 @@ class Login extends StatelessWidget {
       },
       builder: (context, model, child) {
         return Scaffold(
-          body: Column(
-            children: [
-              TextField(
-                controller: model.controller1,
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  model.printdata();
-                },
-                child: Text("print"),
-              )
-            ],
+          body: Form(
+            key: model
+                .formKey, // Declare _formKey as a GlobalKey<FormState> in your State class
+
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      hintText: "name",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    controller: model.namecontroller,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter your name';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      hintText: "phone",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    controller: model.phonecontroller,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter your phone number';
+                      }
+                      // Add additional validation logic for phone number if needed
+                      return null;
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      hintText: "email",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    controller: model.emailcontroller,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter your email address';
+                      }
+                      // Add additional validation logic for email if needed
+                      return null;
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      hintText: "age",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    controller: model.agecontroller,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter your age';
+                      }
+                      // Add additional validation logic for age if needed
+                      return null;
+                    },
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    if (model.formKey.currentState!.validate()) {
+                      model.validate();
+                    }
+                  },
+                  child: Text("Submit"),
+                )
+              ],
+            ),
           ),
         );
       },
