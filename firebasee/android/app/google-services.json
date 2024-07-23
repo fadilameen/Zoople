@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "276829024282",
+    "project_id": "fadilsample63",
+    "storage_bucket": "fadilsample63.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:276829024282:android:36f61863ab320ac7d7e1a3",
+        "android_client_info": {
+          "package_name": "com.example.firebasee"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyvvybpPxY9pM8VdpAPmHLu4MtOIiSZnc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
